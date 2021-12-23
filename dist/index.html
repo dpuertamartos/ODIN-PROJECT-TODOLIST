@@ -28,7 +28,21 @@
             <button class="btn btn-primary submitToDo">Submit</button>
         </div>
     </div>
-    <div id="content"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <div>
+                <label for="ProjectTitleForm" class="form-label">Project Name</label>
+                <input type="text" class="form-control" id="ProjectTitleForm">
+                <br>
+                <button class="btn btn-outline-success createProject">+  Create Project</button>
+                </div>
+            </div>
+            <div class="col-9"><div id="content"></div></div>
+        </div>
+        
+    </div>
+    
     <script src="main.js"></script>
   </body>
 </html>

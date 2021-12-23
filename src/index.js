@@ -15,7 +15,7 @@ const createToDo = () => {
         dateForm.value, importantCheck.checked)
     toDoList = toDoList.concat(newToDo)
     const defaultP = projects.filter(project => project.title === "default")[0].list
-    defaultP.push(toDoList)   
+    defaultP.push(newToDo)   
 }
 
 const restartCreateForm = () => {
@@ -25,18 +25,24 @@ const restartCreateForm = () => {
     importantCheck.checked = false
 }
 
+// refresh all the projects
 const refreshToDo = () => {
     const content = document.querySelector("#content")
     content.textContent = ""
-    toDoList.map(todo => {
-        const newToDo = document.createElement("div")
-        newToDo.className = "container"
-        const titleDiv = document.createElement("div")
-        titleDiv.textContent = todo.title
-        const dateDiv = document.createElement("div")
-        dateDiv.textContent = todo.dueDate
-        newToDo.append(titleDiv, dateDiv)
-        content.append(newToDo)
+    projects.map(project => {
+        const newProject = document.createElement("div")
+        newProject.className = "container"
+        const titleProject = document.createElement("p")
+        titleProject.textContent = project.title
+        newProject.append(titleProject)
+        project["list"].map(todo=>{
+            const titleDiv = document.createElement("div")
+            titleDiv.textContent = todo.title
+            const dateDiv = document.createElement("div")
+            dateDiv.textContent = todo.dueDate
+            newProject.append(titleDiv, dateDiv)
+        })
+        content.append(newProject)
     })
 }
 
@@ -57,3 +63,4 @@ createButton.addEventListener("click", ()=>{
 })
 
 createDefaultProject()
+refreshToDo()

@@ -1,3 +1,7 @@
 #todoForm{
     padding: 5% 10%;
 }
+
+.createProject, #ProjectTitleForm{
+    width: 75%;
+}
