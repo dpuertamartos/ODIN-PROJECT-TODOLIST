@@ -9,6 +9,7 @@ const createToDoForm = (project) => {
     form.className = "todoForm"
     const formTitle = createmb3()
     const title = document.createElement("h2")
+    title.className="formularyTitle"
     title.textContent = `Create TO DO for "${project.title}"`
     formTitle.append(title)
     const row1 = createmb3()

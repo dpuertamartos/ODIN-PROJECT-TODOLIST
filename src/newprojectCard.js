@@ -1,7 +1,8 @@
-import {handleNewForm, handleRemove} from "./index.js"
+import {handleNewForm, handleRemove, handleEdit} from "./index.js"
 import checked from "./checked.png"
 import unchecked from "./unchecked.png"
 import removeImage from "./remove.png"
+import editImage from "./edit.png"
 
 const createCard = (project) => {
     const card = document.createElement("div")
@@ -61,6 +62,12 @@ const createCard = (project) => {
                 const removeButtonImage = new Image()
                 removeButtonImage.src=removeImage 
                 removeButtonImage.className="img-fluid"
+                const editButtonImage = new Image()
+                editButtonImage.src=editImage 
+                editButtonImage.className="img-fluid"
+                const editButton = document.createElement("div")
+                const editButtonText = document.createElement("span")
+                editButtonText.textContent = "Edit"
                 const removeButton = document.createElement("div")
                 const removeButtonText = document.createElement("span")
                 removeButtonText.textContent = "Remove"
@@ -69,7 +76,12 @@ const createCard = (project) => {
                     handleRemove(project.title, i)
                     listGroup.removeChild(listItem)
                 })
-                listExpanded.append(listDescription, removeButton)
+                editButton.append(editButtonImage, editButtonText)
+                editButton.addEventListener("click", ()=>{
+                    console.log("EDITING")
+                    handleEdit(project, i)
+                })
+                listExpanded.append(listDescription, editButton, removeButton)
                 listItemLeft.append(listExpanded)
             }
             else{

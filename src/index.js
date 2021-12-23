@@ -23,6 +23,17 @@ const createToDo = (projectSelectedTitle) => {
     console.log(newToDo)  
 }
 
+const updateToDo = (project, index) => {
+    const titleForm = document.querySelector("#titleForm")
+    const descriptionForm = document.querySelector("#descriptionForm")
+    const dateForm = document.querySelector("#dateForm")
+    const importantCheck = document.querySelector("#checkPriority")
+    project.list[index].title = titleForm.value
+    project.list[index].description = descriptionForm.description
+    project.list[index].dueDate = dateForm.value
+    project.list[index].priority = importantCheck.checked
+}
+
 const createProject = (title) => {
     const newProject = new project(title)
     projects.push(newProject)
@@ -50,6 +61,37 @@ const handleNewForm = (project) => {
 const handleRemove = (title, index) =>{
     const projectToRemoveFrom = projects.filter(project => project.title === title)[0].list
     projectToRemoveFrom.splice(index,1)
+}
+
+const handleEdit = (project, index) => {
+    const newForm = createNewToDoForm(project)
+    console.log(newForm)
+    const formContainer = document.querySelector("#todoForm")
+    formContainer.textContent = ""
+    formContainer.append(newForm) 
+    const formTitle= document.querySelector(".formularyTitle")
+    formTitle.textContent=`Updating ${project.list[index].title} of "${project.title}"`
+    const titleForm = document.querySelector("#titleForm")
+    const descriptionForm = document.querySelector("#descriptionForm")
+    const dateForm = document.querySelector("#dateForm")
+    const importantCheck = document.querySelector("#checkPriority")
+    titleForm.value=project.list[index].title
+    descriptionForm.value=project.list[index].description
+    dateForm.value=project.list[index].dueDate
+    if(project.list[index].priority===true){
+        importantCheck.checked=true
+    }
+    const submitButton = document.querySelector(".submitToDo")
+    const cancelButton = document.querySelector(".cancelSubmit")
+    submitButton.addEventListener("click", ()=>{
+        updateToDo(project, index)
+        console.log("updated To Do")
+        refreshToDo()
+        formContainer.textContent = ""
+    })
+    cancelButton.addEventListener("click", ()=>{
+        formContainer.textContent = ""
+    })
 }
 
 // refresh all the projects
@@ -83,4 +125,4 @@ createProjectB.addEventListener("click", ()=>{
 createDefaultProject()
 refreshToDo()
 
-export {handleNewForm, handleRemove}
+export {handleNewForm, handleRemove, handleEdit}
