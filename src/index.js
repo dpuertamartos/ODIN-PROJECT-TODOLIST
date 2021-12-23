@@ -18,6 +18,11 @@ const createToDo = () => {
     defaultP.push(newToDo)   
 }
 
+const createProject = (title) => {
+    const newProject = new project(title)
+    projects.push(newProject)
+}
+
 const restartCreateForm = () => {
     titleForm.value = ""
     descriptionForm.value = ""
@@ -31,7 +36,7 @@ const refreshToDo = () => {
     content.textContent = ""
     projects.map(project => {
         const newProject = document.createElement("div")
-        newProject.className = "container"
+        newProject.className = "col"
         const titleProject = document.createElement("p")
         titleProject.textContent = project.title
         newProject.append(titleProject)
@@ -53,12 +58,20 @@ const descriptionForm = document.querySelector("#descriptionForm")
 const dateForm = document.querySelector("#dateForm")
 const importantCheck = document.querySelector("#checkPriority")
 const createButton = document.querySelector(".submitToDo")
+const createProjectB = document.querySelector(".createProject")
 
 createButton.addEventListener("click", ()=>{
     createToDo()
     console.log("TOTAL TODOS", toDoList)
     console.log("PROJECTS", projects)
     restartCreateForm()
+    refreshToDo()
+})
+
+createProjectB.addEventListener("click", ()=>{
+    const projectTitleForm = document.querySelector("#projectTitleForm")
+    createProject(projectTitleForm.value)
+    projectTitleForm.value = ""
     refreshToDo()
 })
 
