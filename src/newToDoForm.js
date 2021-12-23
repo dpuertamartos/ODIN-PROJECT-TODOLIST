@@ -75,10 +75,7 @@ const createToDoForm = (project) => {
     const closeButton = document.createElement("button")
     closeButton.textContent = "Cancel"
     closeButton.className = "btn btn-dark cancelSubmit"
-    closeButton.addEventListener("click", ()=>{
-        const formContainer = document.querySelector("#todoForm")
-        formContainer.textContent = ""
-    })
+
     form.append(formTitle,row1,row2,row3,row4,submitButton,closeButton)
 
     return form

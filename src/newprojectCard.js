@@ -1,9 +1,9 @@
-import createNewToDoForm from "./newToDoForm.js"
+import {handleNewForm} from "./index.js"
 
 const createCard = (project) => {
     const card = document.createElement("div")
     card.className = "card"
-    card.setAttribute("style", "width: 18rem;")
+    card.setAttribute("style", "width: 100%;")
     const header = document.createElement("div")
     header.className = "card-header"
     header.textContent = project.title
@@ -29,11 +29,7 @@ const createCard = (project) => {
     addToDoButton.className = "btn btn-primary"
     addToDoButton.textContent = 'Add new'
     addToDoButton.addEventListener("click", ()=>{
-        const newForm = createNewToDoForm(project)
-        console.log(newForm)
-        const formContainer = document.querySelector("#todoForm")
-        formContainer.textContent = ""
-        formContainer.append(newForm)
+        handleNewForm(project)
     })
 
     cardBody.append(addToDoButton)
