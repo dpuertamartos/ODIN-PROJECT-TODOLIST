@@ -1,5 +1,6 @@
 import toDo from "./todo.js"
 import project from "./projects.js"
+import newProjectCard from "./newprojectCard"
 import css from "./style.css"
 
 let toDoList = []
@@ -37,16 +38,8 @@ const refreshToDo = () => {
     projects.map(project => {
         const newProject = document.createElement("div")
         newProject.className = "col"
-        const titleProject = document.createElement("p")
-        titleProject.textContent = project.title
-        newProject.append(titleProject)
-        project["list"].map(todo=>{
-            const titleDiv = document.createElement("div")
-            titleDiv.textContent = todo.title
-            const dateDiv = document.createElement("div")
-            dateDiv.textContent = todo.dueDate
-            newProject.append(titleDiv, dateDiv)
-        })
+        const newCard = newProjectCard(project)
+        newProject.append(newCard)
         content.append(newProject)
     })
 }
