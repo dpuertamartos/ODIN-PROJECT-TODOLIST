@@ -105,6 +105,8 @@ const refreshToDo = () => {
         newProject.append(newCard)
         content.append(newProject)
     })
+    localStorage.setItem("projects", JSON.stringify(projects))
+    console.log(JSON.parse(localStorage.getItem("projects")))   
 }
 
 const createProjectB = document.querySelector(".createProject")
@@ -122,7 +124,12 @@ createProjectB.addEventListener("click", ()=>{
     }
 })
 
-createDefaultProject()
+if (JSON.parse(localStorage.getItem("projects")) !== null){
+    projects = JSON.parse(localStorage.getItem("projects"))
+}
+else{
+    createDefaultProject()
+}
 refreshToDo()
 
 export {handleNewForm, handleRemove, handleEdit}
