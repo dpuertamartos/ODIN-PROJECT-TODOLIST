@@ -53,6 +53,12 @@ const handleNewForm = (project) => {
     })
 }
 
+const handleRemove = (title, index) =>{
+    const projectToRemoveFrom = projects.filter(project => project.title === title)[0].list
+    projectToRemoveFrom.splice(index,1)
+    refreshToDo()
+}
+
 // refresh all the projects
 const refreshToDo = () => {
     const content = document.querySelector("#content")
@@ -78,4 +84,4 @@ createProjectB.addEventListener("click", ()=>{
 createDefaultProject()
 refreshToDo()
 
-export {handleNewForm}
+export {handleNewForm, handleRemove}

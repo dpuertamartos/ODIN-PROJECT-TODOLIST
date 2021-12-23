@@ -1,25 +1,3 @@
-{/* <div id="todoForm" class="container">
-<div class="todoForm">
-    <div class="mb-3">
-      <label for="titleForm" class="form-label">Title</label>
-      <input type="text" class="form-control" id="titleForm">
-    </div>
-    <div class="mb-3">
-      <label for="descriptionForm" class="form-label">Description</label>
-      <textarea class="form-control" id="descriptionForm" rows="3"></textarea>
-    </div>
-    <div class="mb-3">
-        <label for="dateForm" class="form-label">Due date</label>
-        <input type="date" class="form-control" id="dateForm">
-    </div>
-    <div class="mb-3 form-check">
-      <input type="checkbox" class="form-check-input" id="checkPriority">
-      <label class="form-check-label" for="checkPriority">High priority</label>
-    </div>
-    <button class="btn btn-primary submitToDo">Submit</button>
-</div>
-</div> */}
-
 const createmb3 = () => {
     const newDiv = document.createElement("div")
     newDiv.className = "mb-3"
