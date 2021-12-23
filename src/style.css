@@ -10,6 +10,17 @@
     margin-bottom: 6%;
 }
 
+.toDoTitle{
+    font-weight: bolder;
+    font-size: 1.5rem;
+
+}
+
+.dueDate{
+    font-size: 1rem;
+    color: rgba(40, 40, 207, 0.534)
+}
+
 .hero-image{
     background-image: url("./background-img.jpg");
     background-color: #cccccc;
@@ -25,4 +36,13 @@
 
 .createProjectContainer{
     color: white;
+}
+
+.submitToDo{
+    margin: 0 2% 0% 0%
+}
+
+.cr{
+    margin-top: 4%;
+    text-align: center;
 }

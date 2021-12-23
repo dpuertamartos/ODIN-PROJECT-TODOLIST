@@ -53,7 +53,7 @@ const createCard = (project) => {
                 const listExpanded = document.createElement("div")
                 listExpanded.className = "expanded"
                 const listDescription = document.createElement("p")
-                listDescription.textContent = "Description: " + project.list[i].description
+                listDescription.textContent = project.list[i].description
                 const removeButtonImage = new Image()
                 removeButtonImage.src=removeImage 
                 removeButtonImage.className="img-fluid"
@@ -63,6 +63,7 @@ const createCard = (project) => {
                 removeButton.append(removeButtonImage, removeButtonText)
                 removeButton.addEventListener("click", () => {
                     handleRemove(project.title, i)
+                    listGroup.removeChild(listItem)
                 })
                 listExpanded.append(listDescription, removeButton)
                 listItemLeft.append(listExpanded)

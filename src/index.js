@@ -27,13 +27,6 @@ const createProject = (title) => {
     projects.push(newProject)
 }
 
-const restartCreateForm = () => {
-    titleForm.value = ""
-    descriptionForm.value = ""
-    dateForm.value = ""
-    importantCheck.checked = false
-}
-
 const handleNewForm = (project) => {
     const newForm = createNewToDoForm(project)
     console.log(newForm)
@@ -56,7 +49,6 @@ const handleNewForm = (project) => {
 const handleRemove = (title, index) =>{
     const projectToRemoveFrom = projects.filter(project => project.title === title)[0].list
     projectToRemoveFrom.splice(index,1)
-    refreshToDo()
 }
 
 // refresh all the projects
@@ -65,7 +57,7 @@ const refreshToDo = () => {
     content.textContent = ""
     projects.map(project => {
         const newProject = document.createElement("div")
-        newProject.className = "col-4"
+        newProject.className = "col-12 col-lg-6"
         const newCard = newProjectCard(project)
         newProject.append(newCard)
         content.append(newProject)
@@ -76,9 +68,15 @@ const createProjectB = document.querySelector(".createProject")
 
 createProjectB.addEventListener("click", ()=>{
     const projectTitleForm = document.querySelector("#projectTitleForm")
-    createProject(projectTitleForm.value)
-    projectTitleForm.value = ""
-    refreshToDo()
+    if(projects.filter(project => project.title === projectTitleForm.value).length>0){
+        alert("ERROR!! Project with this name is already created, use other name")
+        projectTitleForm.value = ""
+    }
+    else{
+        createProject(projectTitleForm.value)
+        projectTitleForm.value = ""
+        refreshToDo()
+    }
 })
 
 createDefaultProject()
