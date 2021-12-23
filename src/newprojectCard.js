@@ -15,6 +15,14 @@ const createCard = (project) => {
         listGroup.append(listItem)
     }
     card.append(listGroup)
+    const cardBody = document.createElement("div")
+    cardBody.className = "card-body"
+    const addToDoButton = document.createElement("button")
+    addToDoButton.className = "btn btn-primary"
+    addToDoButton.textContent = 'Add new'
+    cardBody.append(addToDoButton)
+    card.append(cardBody)
+
     return card
 }
 
