@@ -19,7 +19,8 @@ const createToDo = (projectSelectedTitle) => {
     const newToDo = new toDo(titleForm.value, descriptionForm.value,
         dateForm.value, importantCheck.checked)
     const defaultP = projects.filter(project => project.title === projectSelectedTitle)[0].list
-    defaultP.push(newToDo)   
+    defaultP.push(newToDo) 
+    console.log(newToDo)  
 }
 
 const createProject = (title) => {

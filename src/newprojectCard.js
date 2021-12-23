@@ -16,6 +16,10 @@ const createCard = (project) => {
     for(let i=0;i<project.list.length;i++){
         const listItem = document.createElement("li")
         listItem.className = "list-group-item container"
+        if(project.list[i].priority===true){
+            console.log("important")
+            listItem.setAttribute("style","background-color: #ffffcc")
+        }
         const listItemSub = document.createElement("div")
         listItemSub.className="row"
         const listItemRight = document.createElement("div")
