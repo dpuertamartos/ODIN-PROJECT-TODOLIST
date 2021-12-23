@@ -12,7 +12,7 @@
     </div>
     <div class="container hero-image">
         <div class="row">
-            <div class="col-2 createProjectContainer">
+            <div class="col-3 col-lg-2 createProjectContainer">
                 
                 <label for="projectTitleForm" class="form-label">Project Name</label>
                 <input type="text" class="form-control" id="projectTitleForm">
@@ -20,7 +20,7 @@
                 <button class="btn btn-success createProject">Add</button>
                 
             </div>
-            <div class="container col-10">
+            <div class="container col-9 col-lg-10">
                 <div class="container">
                     <div class="row" id="content">
                     </div>
@@ -29,7 +29,14 @@
         </div>
         
     </div>
-    
+    <div class="cr">David Puerta ©
+      <script>
+          let date =  new Date().getFullYear();
+          const newDate = document.createElement("span")
+          newDate.textContent = date
+          const Copyright = document.querySelector(".cr").append(newDate)
+      </script>
+    </div>  
     <script src="main.js"></script>
   </body>
 </html>
