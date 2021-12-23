@@ -1,3 +1,5 @@
+import createNewToDoForm from "./newToDoForm.js"
+
 const createCard = (project) => {
     const card = document.createElement("div")
     card.className = "card"
@@ -11,7 +13,13 @@ const createCard = (project) => {
     for(let i=0;i<project.list.length;i++){
         const listItem = document.createElement("li")
         listItem.className = "list-group-item"
-        listItem.textContent = project.list[i].title
+        const listTitle = document.createElement("div")
+        listTitle.className = "toDoTitle"
+        listTitle.textContent = project.list[i].title
+        const listDate = document.createElement("div")
+        listDate.textContent = "Do it Before: (" + project.list[i].dueDate + ")"
+        listDate.className = "dueDate"
+        listItem.append(listTitle,listDate)
         listGroup.append(listItem)
     }
     card.append(listGroup)
@@ -20,6 +28,14 @@ const createCard = (project) => {
     const addToDoButton = document.createElement("button")
     addToDoButton.className = "btn btn-primary"
     addToDoButton.textContent = 'Add new'
+    addToDoButton.addEventListener("click", ()=>{
+        const newForm = createNewToDoForm(project)
+        console.log(newForm)
+        const formContainer = document.querySelector("#todoForm")
+        formContainer.textContent = ""
+        formContainer.append(newForm)
+    })
+
     cardBody.append(addToDoButton)
     card.append(cardBody)
 

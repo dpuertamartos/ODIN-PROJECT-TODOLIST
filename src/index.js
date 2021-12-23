@@ -11,11 +11,11 @@ const createDefaultProject = () => {
     projects.push(defaultProject)
 }
 
-const createToDo = () => {
+const createToDo = (projectSelectedTitle) => {
     const newToDo = new toDo(titleForm.value, descriptionForm.value,
         dateForm.value, importantCheck.checked)
     toDoList = toDoList.concat(newToDo)
-    const defaultP = projects.filter(project => project.title === "default")[0].list
+    const defaultP = projects.filter(project => project.title === projectSelectedTitle)[0].list
     defaultP.push(newToDo)   
 }
 
@@ -46,20 +46,20 @@ const refreshToDo = () => {
 
 // select all elements from the form and the button to use in the create
 // and restart functions
-const titleForm = document.querySelector("#titleForm")
+/* const titleForm = document.querySelector("#titleForm")
 const descriptionForm = document.querySelector("#descriptionForm")
 const dateForm = document.querySelector("#dateForm")
 const importantCheck = document.querySelector("#checkPriority")
-const createButton = document.querySelector(".submitToDo")
+const createButton = document.querySelector(".submitToDo") */
 const createProjectB = document.querySelector(".createProject")
 
-createButton.addEventListener("click", ()=>{
+/* createButton.addEventListener("click", ()=>{
     createToDo()
     console.log("TOTAL TODOS", toDoList)
     console.log("PROJECTS", projects)
     restartCreateForm()
     refreshToDo()
-})
+}) */
 
 createProjectB.addEventListener("click", ()=>{
     const projectTitleForm = document.querySelector("#projectTitleForm")
